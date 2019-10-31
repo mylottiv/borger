@@ -48,7 +48,11 @@
         $('.borger-button').on('click', function(e) {
             e.preventDefault();
             console.log(typeof $(this).data('id'))
-            $.post('/api/borgers', {id: $(this).data('id')}, (res) => console.log('post sent', res))
+            $.ajax({
+                url: '/api/borgers',
+                method: 'PUT',
+                data: $(this).data('id'),
+                success: (response) => console.log('put sent', response);
         });
     });
 </script>

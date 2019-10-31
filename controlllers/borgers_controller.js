@@ -23,12 +23,13 @@ router.get('/api/borgers/:borger?');
 
 // Router post routes
 router.post('/api/borgers', function(req, res) {
-    console.log(req.body.id);
-    res.send('yes')
 });
 
 // Router put routes
-router.put('/api/borgers');
+router.put('/api/borgers', function(req, res) {
+    console.log(req.body.id);
+    res.send('yes');
+});
 
 // Export router
 module.exports = router;
