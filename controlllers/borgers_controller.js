@@ -9,7 +9,9 @@ const Borger = require('../models/borger');
 router.get('/:index?', function (req, res, next) {
     if (!req.param.index || req.param.index === 'index' || req.param.index === 'home') {
         Borger.displayBorgers(function(borgers) {
-            res.render('index', {borgers});
+            uneaten_borgers = borgers.filter((borger) => (borger.devoured === 0));
+            devoured_borgers = borgers.filter((borger) => (borger.devoured === 1));
+            res.render('index', {uneaten_borgers, devoured_borgers});
         });
     }
     else {
@@ -20,7 +22,10 @@ router.get('/:index?', function (req, res, next) {
 router.get('/api/borgers/:borger?');
 
 // Router post routes
-router.post('/api/borgers');
+router.post('/api/borgers', function(req, res) {
+    console.log(req.body.id);
+    res.send('yes')
+});
 
 // Router put routes
 router.put('/api/borgers');
