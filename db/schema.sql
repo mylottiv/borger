@@ -1,0 +1,8 @@
+DROP DATABASE IF EXISTS borgers_db;
+CREATE DATABASE borgers_db;
+USE borgers_db;
+CREATE TABLE borgers (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    borger_name VARCHAR(255) NOT NULL,
+    devoured BOOLEAN NOT NULL DEFAULT FALSE
+);
