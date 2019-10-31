@@ -1,5 +1,5 @@
 // Import ORM
-const orm = require('./config/orm');
+const orm = require('../config/orm');
 
 // Borger contextual ORM method calls
 module.exports.displayBorgers = () => orm.selectAll();

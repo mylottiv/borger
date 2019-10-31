@@ -3,10 +3,17 @@ const express = require('express');
 const router = express.Router()
 
 // Import borger Model
-const borger = require('models/borger.js');
+const borger = require('../models/borger');
 
 // Router get routes
-router.get('/:index?');
+router.get('/:index?', function (req, res, next) {
+    if (!req.param.index || req.param.index === 'index' || req.param.index === 'home') {
+        res.render('index');
+    }
+    else {
+        res.next();
+    }
+});
 
 router.get('/api/borgers/:borger?');
 

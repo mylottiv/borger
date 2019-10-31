@@ -1,5 +1,5 @@
 // Import mysql db connection
-const connection = require('connection');
+const connection = require('./connection');
 
 // selectAll Controller
 module.exports.selectAll = function() {
