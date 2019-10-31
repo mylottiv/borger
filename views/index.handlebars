@@ -47,12 +47,12 @@
     $(function(){
         $('.borger-button').on('click', function(e) {
             e.preventDefault();
-            console.log(typeof $(this).data('id'))
             $.ajax({
                 url: '/api/borgers',
                 method: 'PUT',
-                data: $(this).data('id'),
-                success: (response) => console.log('put sent', response);
+                data: {id: $(this).data('id')},
+                success: (response) => console.log('put sent', response)
+            });
         });
     });
 </script>
