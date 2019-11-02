@@ -6,4 +6,4 @@ module.exports.displayBorgers = orm.selectAll;
 
 module.exports.addBorger = orm.insertOne;
 
-module.exports.updateBorger = orm.updateOne;
+module.exports.devourBorger = orm.updateOne;

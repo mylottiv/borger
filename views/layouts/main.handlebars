@@ -13,25 +13,32 @@
         {{{body}}}
     </body>
     <script>
+        // Initialize Button code on document load
         $(function(){
-            $('.borger-button').on('click', function(e) {
+
+            // Enter da Borger onclick will add a new Borger to the db
+            $('#new-borger-button').on('click', function(e) {
+                e.preventDefault();
+                $.ajax({
+                    url: '/api/borgers',
+                    method: 'POST',
+                    data: {name: $('#new-borger').val().trim()},
+                    success: (results) => console.log(results)
+                })
+            });
+
+            // Eat da Borger onclick will update the devoured status of borger to true
+            $('.devour-borger-button').on('click', function(e) {
                 e.preventDefault();
                 $.ajax({
                     url: '/api/borgers',
                     method: 'PUT',
                     data: {id: $(this).data('id')},
-                    success: (response) => console.log('put sent', response)
+                    success: (response) => {
+                        console.log('put request processed', response);
+                        location.reload(true);
+                    }
                 });
-            });
-            $('#new-borger-button').on('click', function(e) {
-                e.preventDefault();
-                console.log($('#new-borger').val().trim())
-                $.ajax({
-                    url: '/api/borgers',
-                    method: 'POST',
-                    data: {name: $('#new-borger').val().trim()},
-                })
-                .then((results) => console.log(results));
             });
         });
     </script>

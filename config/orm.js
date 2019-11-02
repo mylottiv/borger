@@ -30,10 +30,10 @@ module.exports.insertOne = function(name, cb) {
 };
 
 // updateOne Controller
-module.exports.updateOne = function(name) {
-    
-    connection.query('UPDATE borgers SET devoured=true WHERE name=?', [name], function (error, results){
+module.exports.updateOne = function(id, cb) {
+    connection.query('UPDATE borgers SET devoured=true WHERE id=?', [id], function (error, result){
         if (error) throw error;
-        console.log(name, 'borger devoured successfully!');
+        console.log(id, 'borger devoured successfully!');
+        cb(result);
     })
 };

@@ -19,21 +19,25 @@ router.get('/:index?', function (req, res, next) {
     }
 });
 
+// Borgers API get route for all borgers OR individual borgers
 router.get('/api/borgers/:borger?');
 
 // Router post routes
 router.post('/api/borgers', function(req, res) {
     Borger.addBorger(req.body.name, function(result){
         console.log('borger successfully added', result);
-        res.json(req.body.name);
+        res.send('Post request fulfilled successfully');
     })
 
 });
 
 // Router put routes
 router.put('/api/borgers', function(req, res) {
-    console.log(req.body.id);
-    res.send('yes');
+    console.log(req.body.id)
+    Borger.devourBorger(req.body.id, function(result){
+        console.log('Borger successfully devoured', result);
+        res.send('Put request fulfilled successfully');
+    })
 });
 
 // Export router
