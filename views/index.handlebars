@@ -11,7 +11,7 @@
                     <div class='card'>
                         <div class='card-body'>
                             <h5 class='card-title'>{{borger_name}}</h5>
-                            <button type="button" class='borger-button' data-id={{id}} id='borgerButton{{id}}'>Eat Da Borger</button>
+                            <button type="button" class='eat-borger-button' data-id={{id}} id='eat-borger-button-{{id}}'>Eat Da Borger</button>
                         </div>
                     </div>
                 {{/each}}
@@ -36,23 +36,10 @@
                     <label for='new-borger'>Enter Da Borger</label>
                     <input type="text" class='form-text form-control' name='new-borger' id='new-borger'>
                     <div class='form-group'>
-                        <br><button type='submit' class='btn-danger btn-lg'>Put Borger On Menu</button>
+                        <br><button type='submit' class='btn-danger btn-lg' name='new-borger-button' id='new-borger-button'>Put Borger On Menu</button>
                     </div>
                 </form>
             </p>
         </div>
     </div>
 </div>
-<script>
-    $(function(){
-        $('.borger-button').on('click', function(e) {
-            e.preventDefault();
-            $.ajax({
-                url: '/api/borgers',
-                method: 'PUT',
-                data: {id: $(this).data('id')},
-                success: (response) => console.log('put sent', response)
-            });
-        });
-    });
-</script>
