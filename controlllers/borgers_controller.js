@@ -23,6 +23,11 @@ router.get('/api/borgers/:borger?');
 
 // Router post routes
 router.post('/api/borgers', function(req, res) {
+    Borger.addBorger(req.body.name, function(result){
+        console.log('borger successfully added', result);
+        res.json(req.body.name);
+    })
+
 });
 
 // Router put routes

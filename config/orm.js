@@ -20,11 +20,12 @@ module.exports.selectAll = function(cb) {
 };
 
 // insertOne Controller
-module.exports.insertOne = function(name) {
-    
-    connection.query('INSERT INTO borgers (name) VALUES (?)', [name], function(error, results) {
+module.exports.insertOne = function(name, cb) {
+    console.log(name, cb);
+    connection.query('INSERT INTO borgers (borger_name) VALUES (?)', [name], function(error, result) {
         if (error) throw error;
         console.log(name, 'borger added successfully!');
+        cb(result);
     })
 };
 
