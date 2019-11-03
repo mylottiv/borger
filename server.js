@@ -7,7 +7,10 @@ const PORT = process.env.PORT || 3000;
 
 // Init Express and Handlebars
 const app = express();
-app.engine('handlebars', exphbs());
+app.engine('handlebars', exphbs({
+    helpers: {counter: (index) => index + 1}
+}));
+
 app.set('view engine', 'handlebars');
 
 // Init express middleware

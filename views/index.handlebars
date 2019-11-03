@@ -10,7 +10,7 @@
                 {{#each uneaten_borgers}}
                     <div class='card'>
                         <div class='card-body'>
-                            <h5 class='card-title'>{{borger_name}}</h5>
+                            <h5 class='card-title'>{{counter @index}}: {{borger_name}}</h5>
                             <button type="button" class='devour-borger-button' data-id={{id}} id='devour-borger-button-{{id}}'>Eat Da Borger</button>
                         </div>
                     </div>
@@ -22,7 +22,7 @@
                 {{#each devoured_borgers}}
                     <div class='card'>
                         <div class='card-body'>
-                            <h5 class='card-title'>{{borger_name}}</h5>
+                            <h5 class='card-title'>{{counter @index}}: {{borger_name}}</h5>
                         </div>
                     </div>
                 {{/each}}
