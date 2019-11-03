@@ -30,7 +30,7 @@ router.get('/api/borgers/:borger?', function (req, res, next) {
     else {
         res.next();
     }
-}););
+});
 
 // Router post routes
 router.post('/api/borgers', function(req, res) {
