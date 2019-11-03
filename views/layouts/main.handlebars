@@ -34,15 +34,27 @@
             $('.devour-borger-button').on('click', function(e) {
                 e.preventDefault();
                 $.ajax({
-                    url: '/api/borgers',
+                    url: '/api/borgers/' + $(this).data('id'),
                     method: 'PUT',
-                    data: {id: $(this).data('id')},
                     success: (response) => {
                         console.log('put request processed', response);
                         location.reload(true);
                     }
                 });
             });
+
+            // Delete da Borger onclick will remove borgers from DB and sync
+            $('.delete-borger-button').on('click', function(e){
+                e.preventDefault();
+                $.ajax({
+                    url: '/api/borgers/' + $(this).data('id'),
+                    method: 'DELETE',
+                    success: (response) => {
+                        console.log('delete request processed', response);
+                        location.reload(true);
+                    }
+                })
+            })
         });
     </script>
 </html>

@@ -37,3 +37,12 @@ module.exports.updateOne = function(id, cb) {
         cb(result);
     })
 };
+
+// deleteOne Controller
+module.exports.deleteOne = function(id, cb) {
+    connection.query('DELETE FROM borgers WHERE id=?', [id], function (error, result){
+        if (error) throw error;
+        console.log(id, 'borger deleted successfully!');
+        cb(result);
+    });
+};

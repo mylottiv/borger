@@ -32,12 +32,18 @@ router.post('/api/borgers', function(req, res) {
 });
 
 // Router put routes
-router.put('/api/borgers', function(req, res) {
-    console.log(req.body.id)
-    Borger.devourBorger(req.body.id, function(result){
+router.put('/api/borgers/:id', function(req, res){
+    Borger.devourBorger(req.params.id, function(result){
         console.log('Borger successfully devoured', result);
         res.send('Put request fulfilled successfully');
     })
+});
+
+router.delete('/api/borgers/:id', function(req, res){
+    Borger.deleteBorger(req.params.id, function(result){
+        console.log('Border deleted successfully, result');
+        res.send('Delete request fulfilled successfully');
+    });
 });
 
 // Export router
