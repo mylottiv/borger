@@ -23,7 +23,10 @@
                     url: '/api/borgers',
                     method: 'POST',
                     data: {name: $('#new-borger').val().trim()},
-                    success: (results) => console.log(results)
+                    success: (results) => {
+                        console.log(results);
+                        location.reload(true);
+                    }
                 })
             });
 
