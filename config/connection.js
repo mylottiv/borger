@@ -1,10 +1,11 @@
 // Initialize mysql
 const mysql = require('mysql');
 
-// Initialize db connection for export
-module.exports = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'porpoise',
-    database: 'borgers_db'
+// Initialize db connection depending on whether heroku JAWSDB environment or local
+module.exports = (procss.env.JAWSDB_URL) ? mysql.createConnection(process.env.JAWSDB_URL) : 
+    mysql.createConnection({
+        host: 'localhost',
+        user: 'root',
+        password: 'porpoise',
+        database: 'borgers_db'
 })
