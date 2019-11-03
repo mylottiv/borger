@@ -20,7 +20,17 @@ router.get('/:index?', function (req, res, next) {
 });
 
 // Borgers API get route for all borgers OR individual borgers
-router.get('/api/borgers/:borger?');
+// Currently only implemented for ALL borgers
+router.get('/api/borgers/:borger?', function (req, res, next) {
+    if (!req.param.borger) {
+        Borger.displayBorgers(function(borgers) {
+            res.json(borgers);
+        });
+    }
+    else {
+        res.next();
+    }
+}););
 
 // Router post routes
 router.post('/api/borgers', function(req, res) {
